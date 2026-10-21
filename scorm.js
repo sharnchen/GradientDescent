@@ -38,16 +38,6 @@
      msg.textContent='已完成閱讀。單獨開啟 HTML 時不會回傳學習狀態；請從 TronClass SCORM 課件入口開啟。';
    }
  }
- window.reportQuizScore=function(score,passed){
-   if(!initialized||score===null)return false;
-   try{
-     api.LMSSetValue('cmi.core.score.min','0');
-     api.LMSSetValue('cmi.core.score.max','100');
-     api.LMSSetValue('cmi.core.score.raw',String(score));
-     api.LMSSetValue('cmi.core.lesson_status',passed?'passed':'failed');
-     return api.LMSCommit('')==='true';
-   }catch(e){return false;}
- };
  document.addEventListener('DOMContentLoaded', function(){
    init();
    var btn=document.getElementById('scorm-complete');
